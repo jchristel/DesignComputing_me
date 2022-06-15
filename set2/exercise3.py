@@ -7,7 +7,10 @@ def is_odd(a_number):
 
     Look into modulo division using the '%' operator as one way of doing this.
     """
-    return None
+    flag = True
+    if (a_number % 2) == 0:
+        flag = False # even number
+    return flag
 
 
 def fix_it(moves=True, should_move=True):
@@ -35,7 +38,10 @@ def loops_1a():
     return a list of 10 items, each one a string with exacly one star in it.
     E.g.: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*']
     """
-    return None
+    value = []
+    for x in range(10):
+        value.append('*')
+    return value
 
 
 def loops_1c(number_of_items=5, symbol="#"):
@@ -45,7 +51,10 @@ def loops_1c(number_of_items=5, symbol="#"):
     string with exacly one symbol in it.
     E.g.: ['#', '#', '#', '#', '#']
     """
-    return None
+    value = []
+    for x in range(number_of_items):
+        value.append(symbol)
+    return value
 
 
 def loops_2():
@@ -66,7 +75,10 @@ def loops_2():
             ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
           ]
     """
-    return None
+    value = []
+    for x in range (10):
+        value.append(loops_1a())
+    return value
 
 
 def loops_3():
@@ -90,7 +102,14 @@ def loops_3():
     TIP: notice that this needs to to return strings of numbers,
          so call str(number) to cast.
     """
-    return None
+    value = []
+    for i in range (10):
+        row = []
+        for x in range (10):
+            row.append(str(i))
+        value.append(row)
+
+    return value
 
 
 def loops_4():
@@ -110,7 +129,13 @@ def loops_4():
       ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     ]
     """
-    return None
+    value = []
+    for i in range (10):
+        row = []
+        for x in range (10):
+            row.append(str(x))
+        value.append(row)
+    return value
 
 
 def loops_5():
@@ -137,7 +162,13 @@ def loops_5():
         "There are {} green bottles".format(8)
     you'll come to see the pros and cons of each over time.
     """
-    return None
+    value = []
+    for i in range (10):
+        row = []
+        for x in range (5):
+            row.append('(i'+ str(i) + ', j'+ str(x)+')')
+        value.append(row)
+    return value
 
 
 def loops_6():
@@ -160,7 +191,18 @@ def loops_6():
     You can use a variable.
     TIP: look out for the starting condition.
     """
-    return None
+    value = []
+    counter = 0
+    for i in range (10):
+        row = []
+        if(counter > 0):
+            for x in range (counter+1):
+                row.append(str(x))
+        else:
+            row.append(str(counter))
+        counter = counter + 1
+        value.append(row)
+    return value
 
 
 def loops_7():
@@ -184,7 +226,33 @@ def loops_7():
     This is a hard problem. Use lots of experimentation and draw
     lots of diagrams!
     """
-    return None
+    
+    value = []
+    counter = 1
+    for i in range (5):
+        row = []
+        stars = []
+        # build the stars first
+        for star in range (counter):
+            stars.append('*')
+        # work out how many blanks ( total list entries is 9)
+        blanks = 9 - counter
+        # divide blanks equally ( if odd number round down)
+        spaces = 0
+        if(is_odd(blanks/2)):
+            spaces = round(blanks/2)
+        else:
+            spaces = blanks/2
+        # built spaces lists
+        spacesList = []
+        for s in range(int(spaces)):
+            spacesList.append(' ')
+        row = list(spacesList)
+        row.extend(stars)
+        row.extend(spacesList)
+        value.append(row)
+        counter = counter + 2  
+    return value
 
 
 def little_printer(some_kind_of_list, exercise_name):
